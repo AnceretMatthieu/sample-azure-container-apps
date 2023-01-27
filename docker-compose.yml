@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  myfrontend:
+    image: ${DOCKER_REGISTRY-}myfrontend
+    build:
+      context: .
+      dockerfile: MyFrontEnd/Dockerfile
+    ports:
+        - "52000:50002"
+
+  myfrontend-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "my-front-end", "-app-port", "80" ]
+    depends_on:
+        - myfrontend
+    network_mode: "service:myfrontend"
+    
+  backend1:
+    image: ${DOCKER_REGISTRY-}backend1
+    build:
+      context: .
+      dockerfile: BackEnd1/Dockerfile
+
+  backend1-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "backend1", "-app-port", "80" ]
+    depends_on:
+        - backend1
+    network_mode: "service:backend1"
+
+  backend2:
+    image: ${DOCKER_REGISTRY-}backend2
+    build:
+      context: .
+      dockerfile: BackEnd2/Dockerfile
+
+  backend2-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "backend2", "-app-port", "80" ]
+    depends_on:
+        - backend2
+    network_mode: "service:backend2"
