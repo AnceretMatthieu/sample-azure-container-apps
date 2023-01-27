@@ -2,7 +2,7 @@
 
 Il s'agit du code source du projet d'exemple utilisé pour illustrer [l'article sur les Azure Containers Apps de mon blog](https://anceret-matthieu.fr/2023/01/les-conteneurs-dans-azure-focus-azure-container-apps/).
 
-![Schéma d'architecture](https://res.cloudinary.com/anceret-matthieu/image/upload/v1674724698/posts/azure-containers/aca-sample-architecture-diagram.pngg)
+![Schéma d'architecture](https://res.cloudinary.com/anceret-matthieu/image/upload/v1674724698/posts/azure-containers/aca-sample-architecture-diagram.png)
 
 Le projet est composé de 3 briques : 
 - **FrontEnd** : site web ASP.Net Core chargé d'afficher le contenu en provenance des briques BackEnd
